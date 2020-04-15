@@ -44,3 +44,8 @@ $ kubectl create -f k8s/deployment.yml
 this will start a pod with 2 containers (clamav and muescheli)
 
 muescheli service exposed through random NodePort port
+
+
+Ref:
+https://github.com/lastops/muescheli
+https://github.com/monostream/muescheli
