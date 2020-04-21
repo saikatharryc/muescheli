@@ -21,7 +21,7 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/monostream/go-clamd"
+  name = "github.com/saikatharryc/go-clamd"
   packages = ["."]
   revision = "fc0f6bc381c9d92f9fb2f5b27fafb9375b2d21a6"
 
@@ -52,6 +52,12 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ef72cbabe8fbaec72c85b3b02b7807e49e64bb8817e3dee9e8dc30dcd79d2ef5"
+  input-imports = [
+    "github.com/gorilla/handlers",
+    "github.com/gorilla/mux",
+    "github.com/saikatharryc/go-clamd",
+    "github.com/rs/cors",
+    "github.com/sirupsen/logrus",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
