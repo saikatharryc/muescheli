@@ -1,30 +1,31 @@
 package main
 
 import (
-	"io"
-	"os"
-	"io/ioutil"
 	"bytes"
-	"strings"
-	"net/http"
 	"encoding/json"
-	"github.com/gorilla/mux"
+	"io"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"strings"
+
 	"github.com/gorilla/handlers"
-	"github.com/monostream/go-clamd"
-	log "github.com/sirupsen/logrus"
+	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"github.com/saikatharryc/go-clamd"
+	log "github.com/sirupsen/logrus"
 )
 
 type FileResult struct {
-	Filename	string
-	Result		string
+	Filename string
+	Result   string
 }
 
 type ScanResult []FileResult
 
 type App struct {
-	Clam	*clamd.Clamd
-	Router	*mux.Router
+	Clam   *clamd.Clamd
+	Router *mux.Router
 }
 
 func (a *App) Initialize(clamdAddress string) {
@@ -45,8 +46,8 @@ func (a *App) Run(addr string) {
 	handler = handlers.CompressHandler(handler)
 
 	handler = cors.New(cors.Options{
-		AllowedOrigins: []string{"*"},
-		AllowedMethods: []string{http.MethodHead, http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodOptions},
+		AllowedOrigins:   []string{"*"},
+		AllowedMethods:   []string{http.MethodHead, http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodOptions},
 		AllowCredentials: true,
 	}).Handler(handler)
 
@@ -79,7 +80,7 @@ func auth(handler http.HandlerFunc) http.HandlerFunc {
 		user, pass, _ := r.BasicAuth()
 
 		if !checkCredentials(user, pass) {
-			respondWithJSONError(w, http.StatusUnauthorized,"Unauthorized", "wrong credentials")
+			respondWithJSONError(w, http.StatusUnauthorized, "Unauthorized", "wrong credentials")
 			return
 		}
 
@@ -109,7 +110,7 @@ func (a *App) scanMultipart(w http.ResponseWriter, r *http.Request) {
 		if part.FileName() != "" {
 			result := a.scan(part)
 			// write result
-			fileResult := FileResult{part.FileName(), result }
+			fileResult := FileResult{part.FileName(), result}
 			scanResult = append(scanResult, fileResult)
 			log.Infof("scanned: %v, %v", part.FileName(), result)
 		}
@@ -130,7 +131,7 @@ func (a *App) scanBody(w http.ResponseWriter, r *http.Request) {
 	part := ioutil.NopCloser(bytes.NewBuffer(buf))
 	result := a.scan(part)
 	// write result
-	fileResult := FileResult{ "request body", result }
+	fileResult := FileResult{"request body", result}
 	scanResult = append(scanResult, fileResult)
 	log.Infof("scanned: %v, %v", "request body", result)
 
@@ -170,7 +171,7 @@ func (a *App) scanHttpUrl(w http.ResponseWriter, r *http.Request) {
 	part := ioutil.NopCloser(bytes.NewBuffer(download))
 	result := a.scan(part)
 	// write result
-	fileResult := FileResult{ "download", result }
+	fileResult := FileResult{"download", result}
 	scanResult = append(scanResult, fileResult)
 	log.Infof("scanned: %v, %v\n", "download", result)
 
