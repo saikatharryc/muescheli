@@ -28,8 +28,7 @@ package main
 import (
 	_ "bytes"
 	"fmt"
-
-	"github.com/saikatharryc/go-clamd"
+	"github.com/dutchcoders/go-clamd"
 )
 
 func main() {

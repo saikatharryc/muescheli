@@ -2,51 +2,70 @@
 
 
 [[projects]]
+  digest = "1:20ed7daa9b3b38b6d1d39b48ab3fd31122be5419461470d0c28de3e121c93ecf"
   name = "github.com/gorilla/context"
   packages = ["."]
+  pruneopts = ""
   revision = "1ea25387ff6f684839d82767c1733ff4d4d15d0a"
   version = "v1.1"
 
 [[projects]]
+  digest = "1:8d67570c1797f3144757d5f121c78ff0a7220e8841f14112bb532787162820f8"
   name = "github.com/gorilla/handlers"
   packages = ["."]
+  pruneopts = ""
   revision = "a4043c62cc2329bacda331d33fc908ab11ef0ec3"
   version = "v1.2.1"
 
 [[projects]]
+  digest = "1:783fde5796ef54ba05de240f2529b6c9fbabc541e70ea43585c53b3f1bbabb5b"
   name = "github.com/gorilla/mux"
   packages = ["."]
+  pruneopts = ""
   revision = "bcd8bc72b08df0f70df986b97f95590779502d31"
   version = "v1.4.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/saikatharryc/go-clamd"
-  packages = ["."]
-  revision = "fc0f6bc381c9d92f9fb2f5b27fafb9375b2d21a6"
-
-[[projects]]
+  digest = "1:bfc8db90e2676a2fc0d742a536f376044a9b74f2745b2c60d339eb06c6c6988a"
   name = "github.com/rs/cors"
   packages = ["."]
+  pruneopts = ""
   revision = "7af7a1e09ba336d2ea14b1ce73bf693c6837dbf6"
   version = "v1.2"
 
 [[projects]]
+  branch = "master"
+  digest = "1:c70eb1b99540b69b98bd8f366e6581e0f258a076d26187586969e0d8fff8f965"
+  name = "github.com/saikatharryc/go-clamd"
+  packages = ["."]
+  pruneopts = ""
+  revision = "fc0f6bc381c9d92f9fb2f5b27fafb9375b2d21a6"
+
+[[projects]]
+  digest = "1:3ac248add5bb40a3c631c5334adcd09aa72d15af2768a5bc0274084ea7b2e5ba"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
+  pruneopts = ""
   revision = "f006c2ac4710855cf0f916dd6b77acf6b048dc6e"
   version = "v1.0.3"
 
 [[projects]]
   branch = "master"
+  digest = "1:f6a006d27619a4d93bf9b66fe1999b8c8d1fa62bdc63af14f10fbe6fcaa2aa1a"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
+  pruneopts = ""
   revision = "9f005a07e0d31d45e6656d241bb5c0f2efd4bc94"
 
 [[projects]]
   branch = "master"
+  digest = "1:f65ca3e7dd06fe7fde56099c7893b76527fc5b2ca48ecdaf318b52fdceff5978"
   name = "golang.org/x/sys"
-  packages = ["unix","windows"]
+  packages = [
+    "unix",
+    "windows",
+  ]
+  pruneopts = ""
   revision = "665f6529cca930e27b831a0d1dafffbe1c172924"
 
 [solve-meta]
@@ -55,8 +74,8 @@
   input-imports = [
     "github.com/gorilla/handlers",
     "github.com/gorilla/mux",
-    "github.com/saikatharryc/go-clamd",
     "github.com/rs/cors",
+    "github.com/saikatharryc/go-clamd",
     "github.com/sirupsen/logrus",
   ]
   solver-name = "gps-cdcl"

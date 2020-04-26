@@ -3,14 +3,14 @@ FROM golang:1.9-alpine as builder
 RUN apk add --update --no-cache ca-certificates
 
 # build
-WORKDIR /go/src/github.com/monostream/muescheli/
+WORKDIR /go/src/github.com/saikatharryc/muescheli/
 
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o muescheli .
 
 # copy artefacts
 WORKDIR /app/
-RUN cp /go/src/github.com/monostream/muescheli/muescheli .
+RUN cp /go/src/github.com/saikatharryc/muescheli/muescheli .
 RUN rm -r /go/src/
 
 FROM scratch
