@@ -24,7 +24,8 @@ jobs:
 
     - name: Get dependencies
       run: |
-        if [ -d $GOPATH/src ] then
+        if [[ -d $GOPATH/src ]] 
+        then
         mkdir $GOPATH/src
         fi
         cd $GOPATH/src
