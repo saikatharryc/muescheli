@@ -38,6 +38,12 @@ $ curl -u muescheli:muescheli -v http://localhost:8091/scan?url=https://tech.ebu
 ```
 
 ## run on kubernetes
+Using [Helm](https://github.com/saikatharryc/helm/tree/master/charts/muescheli):
+```bash
+$ helm repo add saikatharryc https://saikatharryc.github.io/helm/
+$ helm install my-release saikatharryc/muescheli
+```
+Using Kubectl:
 ```bash
 $ kubectl create -f k8s/deployment.yml
 ```
