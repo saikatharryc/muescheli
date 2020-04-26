@@ -24,6 +24,10 @@ jobs:
 
     - name: Get dependencies
       run: |
+        if [ -d $GOPATH/src ] then
+        mkdir $GOPATH/src
+        fi
+        cd $GOPATH/src
         go get -v -t -d ./...
         if [ -f Gopkg.toml ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
