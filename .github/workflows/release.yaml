@@ -17,6 +17,15 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: 1.13
+      - name: Get dependencies
+        run: |
+          if [ -d $GOPATH/src ]; then
+          mkdir $GOPATH/src
+          fi
+          go get -v -t -d ./...
+          if [ -f Gopkg.toml ]; then
+              curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+          fi
       - name: Build The Application
         run: go build -v .
       - name: Publish to Registry
