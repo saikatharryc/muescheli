@@ -1,10 +1,6 @@
-name: Go
+name: check PR
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [ pull_request]
 
 jobs:
   build:
@@ -12,7 +8,7 @@ jobs:
     strategy:
       matrix:
         go: [ '1.13', '1.12' ]
-    name: Go ${{ matrix.go }} sample
+    name: Go ${{ matrix.go }} Build
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
@@ -20,8 +16,6 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: ${{ matrix.go }}
-      - name: Run The Application
-        run: go run hello.go
       - name: Build The Application
         run: go build -v .
       
